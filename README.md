@@ -15,11 +15,12 @@
 3.推荐使用github.io地址，ngrok的实现网络比较慢
 [github.io链接地址](https://www.baidu.com)
 #### 修改点
-1.添加了gulp及其多个插件，压缩js，css，启动本地服务等
-2.修改index.html使用压缩后的js,css
-3.Google Analytics 内联js放到perfmatters.js中的onload事件，不会阻塞dom解析
-4.两个脚本都添加async 因为没有样式和dom操作，不用阻塞
-5.字体css合并到了style.css中。单独一个关键资源请求会阻塞dom解析
+* 添加了gulp及其多个插件，压缩js，css，启动本地服务等
+* 修改index.html使用压缩后的js
+* 字体css合并到了style.css中，再把style.css内联到了html中，减少关键资源的http请求
+* Google Analytics 内联js放到perfmatters.js中的onload事件，不会阻塞dom解析
+* 两个脚本都添加async 因为没有样式和dom操作，不用阻塞
+* 压缩了pizzeria.jpg图片到100px宽度，大小减小到5kb,也压缩了头像图片到2.6kb
 ### 项目二
 #### 修改点
 * style.css  在父布局中添加对pizza的大中小三种样式布局
