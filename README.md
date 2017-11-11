@@ -10,9 +10,9 @@
   $> ./ngrok http 8000
 ```
 2.访问
-[pagespeed网址](https://developers.google.com/speed/pagespeed/insights/)输入ngrok映射地址测试
+[pagespeed网址](https://developers.google.com/speed/pagespeed/insights/){:target="_blank"} 输入ngrok映射地址测试
 
-3.推荐使用[https://gzp4836.github.io/](https://gzp4836.github.io/)，ngrok的实现网络比较慢
+3.推荐使用[https://gzp4836.github.io/](https://gzp4836.github.io/){:target="_blank"}，ngrok的实现网络比较慢
 #### 修改点
 * 添加了gulp及其多个插件，压缩js，css，启动本地服务等
 * 修改index.html使用压缩后的js
