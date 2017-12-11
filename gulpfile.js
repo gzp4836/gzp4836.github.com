@@ -1,4 +1,4 @@
-var folder = "jd-connect";
+var folder = "street-map";
 var gulp = require('gulp');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
