@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    
+
     <style>
         .jdp_wrap {
             padding: 5px 10px;
@@ -29,7 +29,7 @@
         .jdp_ul {
             margin-top: 5px;
             overflow: hidden;
-   
+
         }
 
         .jdp_li {
@@ -47,9 +47,11 @@
             position: relative;
             margin-left: 4%;
         }
-        .jdp_li_1{
-            margin-top:5px;
+
+        .jdp_li_1 {
+            margin-top: 5px;
         }
+
         .jdp_li_1 .jdp_main_text {
             text-align: center;
             width: 70%;
@@ -61,16 +63,18 @@
             color: #999999;
             font-size: .8em;
         }
+
         .jdp_li_1 .jdp_sec_text {
             text-align: center;
             width: 70%;
             margin-left: -5%;
         }
-    
+
         .jdp_li_2 {
             width: 49%;
         }
-        .jdp_li_2:left{
+
+        .jdp_li_2:left {
             background: black;
         }
 
@@ -107,7 +111,7 @@
                 <div class="jdp_main_text"></div>
                 <div class="jdp_sec_text"></div>
                 <img class="jdp_img">
-               <a class="jdp_a"></a>
+                <a class="jdp_a"></a>
             </div>
             <div class="jdp_li jdp_li_1">
                 <div class="jdp_main_text"></div>
@@ -122,57 +126,55 @@
 </body>
 <script src="https://m.jr.jd.com/mjractivity/data_source_100000265.js"></script>
 <script>
-    (function(){
+    (function () {
+        setTimeout(function () {
+            //     function increase_brightness(hex, percent) {
+            //     // strip the leading # if it's there
+            //     hex = hex.replace(/^\s*#|\s*$/g, '');
 
-        function increase_brightness(hex, percent) {
-        // strip the leading # if it's there
-        hex = hex.replace(/^\s*#|\s*$/g, '');
+            //     // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
+            //     if (hex.length == 3) {
+            //         hex = hex.replace(/(.)/g, '$1$1');
+            //     }
 
-        // convert 3 char codes --> 6, e.g. `E0F` --> `EE00FF`
-        if (hex.length == 3) {
-            hex = hex.replace(/(.)/g, '$1$1');
-        }
+            //     var r = parseInt(hex.substr(0, 2), 16),
+            //         g = parseInt(hex.substr(2, 2), 16),
+            //         b = parseInt(hex.substr(4, 2), 16);
 
-        var r = parseInt(hex.substr(0, 2), 16),
-            g = parseInt(hex.substr(2, 2), 16),
-            b = parseInt(hex.substr(4, 2), 16);
-
-        return '#' +
-            ((0 | (1 << 8) + r + (256 - r) * percent / 100).toString(16)).substr(1) +
-            ((0 | (1 << 8) + g + (256 - g) * percent / 100).toString(16)).substr(1) +
-            ((0 | (1 << 8) + b + (256 - b) * percent / 100).toString(16)).substr(1);
-    }
-    var wrap = document.getElementsByClassName('jdp_wrap');
-    if (data_source_100000265 && data_source_100000265.display === true) {
-        var lis = document.getElementsByClassName('jdp_li');
-        
-        var jdpA = document.getElementsByClassName('jdp_a');
-        var secText = document.getElementsByClassName('jdp_sec_text');
-        var mainText = document.getElementsByClassName('jdp_main_text');
-        var jdpImg = document.getElementsByClassName('jdp_img');
-        var jdpTitle = document.getElementsByClassName('jdp_title');
-
-        var data = data_source_100000265;
-        jdpTitle[0].innerHTML = "— "+data.title+" —"
-        var bgCol = data.bgCol || '#ffffff';
-        var txtCol = data.txtCol || '#333333';
-        var l_txtCol = increase_brightness(txtCol, 40);
-        var l_bgCol = increase_brightness(bgCol, 30);
-        
-        wrap[0].style.backgroundColor = bgCol;
-        wrap[0].style.color = txtCol;
-        for (var i = 0; i < lis.length; i++) {
-            lis[i].style.backgroundColor = l_bgCol;
-            secText[i].style.color = l_txtCol;
-            var banner = data.banner1[i];
-            secText[i].innerHTML = banner.sec;
-            mainText[i].innerHTML = banner.main;
-            jdpA[i].href = banner.link;
-            jdpImg[i].src = banner.img;
-        }
-    }else{
-        wrap[0].style.display = 'none';
-    }
+            //     return '#' +
+            //         ((0 | (1 << 8) + r + (256 - r) * percent / 100).toString(16)).substr(1) +
+            //         ((0 | (1 << 8) + g + (256 - g) * percent / 100).toString(16)).substr(1) +
+            //         ((0 | (1 << 8) + b + (256 - b) * percent / 100).toString(16)).substr(1);
+            // }
+            var wrap = document.getElementsByClassName('jdp_wrap');
+            if (!data_source_100000265 || data_source_100000265.display != true) {
+                wrap[0].style.display = 'none';
+            }
+            var lis = document.getElementsByClassName('jdp_li');
+            var jdpA = document.getElementsByClassName('jdp_a');
+            var secText = document.getElementsByClassName('jdp_sec_text');
+            var mainText = document.getElementsByClassName('jdp_main_text');
+            var jdpImg = document.getElementsByClassName('jdp_img');
+            var jdpTitle = document.getElementsByClassName('jdp_title');
+            var data = data_source_100000265;
+            jdpTitle[0].innerHTML = "— " + data.title + " —"
+            var bgCol = data.bgCol || '#ffffff';
+            var txtCol = data.txtCol || '#333333';
+            var l_txtCol = data.l_txtCol || '#666666';
+            var l_bgCol = data.l_bgCol || '#efefef';
+            wrap[0].style.backgroundColor = bgCol;
+            wrap[0].style.color = l_txtCol;
+            jdpTitle[0].style.color = txtCol;
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].style.backgroundColor = l_bgCol;
+                secText[i].style.color = l_txtCol;
+                var banner = data.banner1[i];
+                secText[i].innerHTML = banner.sec;
+                mainText[i].innerHTML = banner.main;
+                jdpA[i].href = banner.link;
+                jdpImg[i].src = banner.img;
+            }
+        }, 1000);
     })()
 </script>
 
