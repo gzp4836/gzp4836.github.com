@@ -1,45 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>街区地图</title>
-    <!-- <link rel="stylesheet" href="css/main.scss"> -->
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+    </script>
     <style>
-        html,body{
-            margin: 0;
-            height: 100%;
-            font-size: 16px;
+        @media screen and (max-width: 321px) {
+            body {
+                font-size: 16px
+            }
         }
-        header{
-            background-color: #333333;
-            max-width: 20%;
-            color: #999999;
-            height: 100%;
-        }
-        .head{
-            height: 48px;
-            width: 100%;
-            background: #000000;
 
+        @media screen and (min-width: 321px) and (max-width:400px) {
+            body {
+                font-size: 17px
+            }
         }
-        .search-area{
-            background: #999999;
-            color: #000000;
-            border: none;
-            padding: 20px 10px;
 
+        @media screen and (min-width: 400px) {
+            body {
+                font-size: 19px
+            }
         }
     </style>
+    <!-- <link rel="stylesheet" href="css/main.scss"> -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #1e1e1e;
+            height: 1rem;
+            position: relative;
+
+        }
+        
+
+        .header a {
+            background-image: url(img/category.svg);
+            background-size: contain;
+            display: inline-block;
+            position: absolute;
+            left: .25rem;
+            width: .5rem;
+            height: .5rem;
+            top: .25rem;
+        }
+        .back a{
+            background-image: url(img/back.svg);
+        }
+         .hide{
+            transform: translateX(-100%); 
+        }
+
+        .menu {
+            background-color: rgba(0, 0, 0, .8);
+            position: absolute;
+            top: 1rem;
+            width: 100%;
+            color: #eee;
+            bottom: 0;
+            transition: all 1s;
+        }
+
+        .menu .search {
+            width: 100%;
+            height: .6rem;
+            position: relative;
+        }
+
+        .menu .search input {
+            background-color: #efefef;
+            margin-left: 1%;
+            width: 79%;
+            height: 100%;
+            outline: none;
+            border: none;
+            padding: 3%;
+        }
+
+        .menu .search a {
+            display: inline-block;
+            width: 19%;
+            position: absolute;
+            height: 100%;
+            right: 1%;
+            line-height: .6rem;
+            text-align: center;
+            text-decoration: none;
+            color: #efefef;
+            background-color: #1302fac4;
+
+        }
+
+        .menu ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            top: 0.6rem;
+            overflow-y: scroll;
+        }
+
+        .menu ul li {
+            padding: .2rem 3%;
+            font-size: .8em;
+        }
+        
+    </style>
 </head>
+
 <body>
-    <header>
-        <div class="head">
-            <a class="banger-btn" href=""></a>
-        </div>
+    <header class="header">
+        <a href=""></a>
+    </header>
+    <div class="menu hide">
         <div class="search">
-            <input class="search-area" type="search"/>
+            <input class="search-area" type="search" />
             <a class="search-btn" href="">Fillter</a>
         </div>
         <ul class="list">
@@ -64,7 +157,36 @@
             <li>悉尼 19</li>
             <li>悉尼 20</li>
         </ul>
-    </header>
-    <section></section>
+    </div>
+
+    <div id='map' class="map"></div>
 </body>
+ <script src="lib/knockout-3.4.2.js"></script>
+ <script>
+     var header = document.getElementsByTagName("header")[0];
+     var menu = document.getElementsByClassName('menu')[0];
+     header.addEventListener('click',function(){
+         if(header.className.indexOf('back')!=-1){
+             header.className = "header";
+             menu.className = "menu hide";
+         }else{
+            header.className = "header back";
+             menu.className = "menu"; 
+         }
+     },false);
+ </script>
+ <!--
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZuN1mAD68bsZoAbBXCUfqM561iPPAgrk&callback=initMap" async
+    defer></script>
+<script>
+    function initMap() {
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8
+        });
+    }
+
+</script> -->
+
 </html>
