@@ -72,6 +72,8 @@
 
         .jdp_li_2 {
             width: 49%;
+            margin-top:5px;
+            margin-bottom: 5px; 
         }
 
         .jdp_li_2:left {
@@ -101,6 +103,12 @@
     <div class="jdp_wrap">
         <div class="jdp_title"></div>
         <div class="jdp_ul">
+            <div class="jdp_li jdp_li_1">
+                <div class="jdp_main_text"></div>
+                <div class="jdp_sec_text"></div>
+                <img class="jdp_img">
+                <a class="jdp_a"></a>
+            </div>
             <div class="jdp_li jdp_li_2">
                 <div class="jdp_main_text"></div>
                 <div class="jdp_sec_text"></div>
@@ -113,14 +121,8 @@
                 <img class="jdp_img">
                 <a class="jdp_a"></a>
             </div>
-            <div class="jdp_li jdp_li_1">
-                <div class="jdp_main_text"></div>
-                <div class="jdp_sec_text"></div>
-                <img class="jdp_img">
-                <a class="jdp_a"></a>
-            </div>
-        </div>
 
+        </div>
     </div>
 
 </body>
@@ -172,7 +174,11 @@
                 secText[i].innerHTML = banner.sec;
                 mainText[i].innerHTML = banner.main;
                 jdpA[i].href = banner.link;
-                jdpImg[i].src = banner.img;
+                var img = document.createElement("img");
+                img.className = "jdp_img";
+                img.src = banner.img;
+                lis[i].appendChild(img);
+                // jdpImg[i].src = banner.img;
             }
         }, 1000);
     })()
