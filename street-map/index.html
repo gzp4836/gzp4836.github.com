@@ -14,53 +14,15 @@
 
     </script>
     <style>
-        @media screen and (max-width: 321px) {
-            body {
-                font-size: 16px
-            }
-        }
-
-        @media screen and (min-width: 321px) and (max-width:750px) {
-            body {
-                font-size: 17px
-            }
-        }
-
-        @media screen and (min-width: 750px) and (max-width:1100px) {
+        @media screen and (min-width: 750px) {
             body {
                 font-size: 19px
             }
             body .menu {
-                width: 50%;
-            }
-
-        }
-
-        @media screen and (min-width: 1100px) and (max-width:1500px) {
-            body {
-                font-size: 22px;
-            }
-            body .menu {
-                width: 40%;
+                width: 35%;
                 transform: translateX(0);
             }
 
-        }
-
-        @media screen and (min-width: 1500px) {
-            body {
-                font-size: 24px;
-            }
-            body .menu {
-                width: 30%;
-                transform: translateX(0);
-            }
-        }
-    </style>
-    <!-- <link rel="stylesheet" href="css/main.scss"> -->
-    <style>
-        * {
-            box-sizing: border-box;
         }
 
         html {
@@ -69,6 +31,7 @@
         }
 
         body {
+            font-size: 16px;
             margin: 0;
             height: 100%;
             box-sizing: border-box;
@@ -77,9 +40,8 @@
 
         .header {
             background-color: #1e1e1e;
-            height: 80px;
-            position: relative;
-
+            height: 50px;
+            position: relative
         }
 
 
@@ -88,10 +50,10 @@
             background-size: contain;
             display: inline-block;
             position: absolute;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            top: 15px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            top: 10px;
             border: none;
             padding: 0;
             background-color: transparent;
@@ -106,7 +68,7 @@
         .menu {
             background-color: rgba(0, 0, 0, .8);
             position: absolute;
-            top: 80px;
+            top: 50px;
             color: #eee;
             bottom: 0;
             transition: all .3s ease-in-out;
@@ -122,30 +84,28 @@
 
         .menu .search input {
             background-color: #efefef;
-            margin-left: 1%;
-            width: 79%;
+            width: 80%;
             height: 100%;
             outline: none;
             border: none;
-            padding: 15px;
-            font-size: 1.1em;
+            padding: 10px 2%;
+            font-size: 1em;
         }
 
         .menu .search button {
             display: inline-block;
-            width: 19%;
+            width: 20%;
             position: absolute;
             height: 100%;
             outline: none;
-            line-height: 50px;
             text-align: center;
             text-decoration: none;
-            color: #efefef;
+            color: #039be5;
             border: none;
-            background-color: #1302fac4;
             padding: 0;
             top: 0;
-            font-size: 1.2em;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+            font-size: 1em;
 
         }
 
@@ -159,9 +119,9 @@
         }
 
         .menu ul li {
-            padding: 0 3%;
-            line-height: 60px;
-            height: 60px;
+            padding: 0 2%;
+            line-height: 48px;
+            height: 48px;
         }
 
         .map {
@@ -181,7 +141,7 @@
             <button data-bind="click:fillter">Fillter</button>
         </div>
         <ul class="list" data-bind="foreach:locList">
-            <li data-bind="text:name"></li>
+            <li data-bind="text:name,visible:visiable,click:$parent.markerShow"></li>
         </ul>
     </div>
     <div id='map' class="map"></div>

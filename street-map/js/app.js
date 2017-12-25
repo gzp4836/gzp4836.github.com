@@ -19,6 +19,7 @@ var pos;
 var map;
 var infoWindow;
 var service;
+var markers;
 function initMap() {
 
     // Browser doesn't support Geolocation
@@ -37,61 +38,84 @@ function initMap() {
         zoom: 15
     });
     infowindow = new google.maps.InfoWindow();
-    var markers = [];
-    function addMarker(data) {
-        markers.forEach(function (marker) {
-            marker.setMap(null);
-        });
+    function renderGoogleMarker(list) {
+        if (markers) {
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+        }
         markers = [];
-        for (var i = 0; i < data.length; i++) {
-            var place = data[i];
-            var placeLoc = place.geometry.location;
+        for (var i = 0; i < list.length - 1; i++) {
             var marker = new google.maps.Marker({
                 map: map,
-                position: place.geometry.location
+                animation: google.maps.Animation.DROP,
+                position: list[i].geometry.location
             });
             markers.push(marker);
+            if (!list[i].visiable()) {
+                marker.setMap(null);
+            }
 
             google.maps.event.addListener(marker, 'click', function () {
-                infowindow.setContent(place.name);
+                infowindow.setContent(list[i].name());
                 infowindow.open(map, this);
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+                setTimeout(function () {
+                    marker.setAnimation(null);
+                  }, 1400)
             });
         }
     }
+
+    var Loc = function (index, loc) {
+        this.name = ko.observable(loc.name);
+        this.index = ko.observable(index);
+        this.visiable = ko.observable(true);
+        this.geometry = loc.geometry;
+    }
     var ViewModel = function () {
-        this.locList = ko.observableArray(data);
-        addMarker(this.locList());
+        var self = this;
+        this.locList = ko.observableArray([]);
+        for (var i = 0; i < locData.length; i++) {
+            self.locList.push(new Loc(i, locData[i]));
+        }
+
+        renderGoogleMarker(this.locList());
+
+        this.markerShow = function (loc) {
+            google.maps.event.trigger(markers[loc.index()], 'click');
+        }
+
         this.fillter = function () {
-            var newLocList = [];
-            var val = input.value;
-            for (var j = 0; j < data.length; j++) {
-                if (data[j].name.indexOf(val) != -1) {
-                    newLocList.push(data[j]);
+            for (var j = 0; j < self.locList().length; j++) {
+                var item = self.locList()[j];
+                item.visiable(true);
+                if (item.name().indexOf(input.value) === -1) {
+                    item.visiable(false);
                 }
             }
-            this.locList(newLocList);
-            addMarker(this.locList());
+            renderGoogleMarker(this.locList());
         }
 
     }
-    if (!data) {
-        service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-            location: pos,
-            bounds: map.getBounds(),
-            radius: '5000',
-            query: 'park'
-        }, callback);
-        function callback(results, status) {
-            console.log("返回地理位置： " + JSON.stringify(results));
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-                console.error("查地址错啦！");
-                return;
-            }
-            window.data = results;
-            ko.applyBindings(new ViewModel());
-        }
-    }
+    // if (!data) {
+    //     service = new google.maps.places.PlacesService(map);
+    //     service.nearbySearch({
+    //         location: pos,
+    //         bounds: map.getBounds(),
+    //         radius: '5000',
+    //         query: 'park'
+    //     }, callback);
+    //     function callback(results, status) {
+    //         console.log("返回地理位置： " + JSON.stringify(results));
+    //         if (status != google.maps.places.PlacesServiceStatus.OK) {
+    //             console.error("查地址错啦！");
+    //             return;
+    //         }
+    //         window.data = results;
+    //         ko.applyBindings(new ViewModel());
+    //     }
+    // }
     ko.applyBindings(new ViewModel());
 
 
