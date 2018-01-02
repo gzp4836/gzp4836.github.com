@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <style>
+        .jdp_ul {
+            margin-top: 5px;
+            overflow: hidden;
+
+        }
+
+        .jdp_li {
+            width: 100%;
+            border-radius: 3px;
+            list-style: none;
+            float: left;
+            position: relative;
+            padding: 15px 0;
+            background-color: #f2f2f2;
+        }
+
+
+        .jdp_main_text {
+            position: relative;
+            margin-left: 4%;
+        }
+
+        .jdp_li_1 {
+            margin-top: 5px;
+        }
+
+        .jdp_li_1 .jdp_main_text {
+            text-align: center;
+            width: 70%;
+            margin-left: -5%;
+        }
+
+        .jdp_sec_text {
+            margin-left: 4%;
+            color: #999999;
+            font-size: .8em;
+        }
+
+        .jdp_li_1 .jdp_sec_text {
+            text-align: center;
+            width: 70%;
+            margin-left: -5%;
+        }
+
+        .jdp_li_2 {
+            width: 49%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .jdp_li_2:left {
+            background: black;
+        }
+
+        .jdp_img {
+            position: absolute;
+            height: 56%;
+            top: 23%;
+            right: 4%;
+        }
+
+        .jdp_li_1 .jdp_img {
+            right: 9%;
+        }
+
+        .jdp_a {
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    <div id ="jdp_wrap" style="padding: 5px 10px;"></div>
+
+</body>
+<script src="https://m.jr.jd.com/mjractivity/data_source_100000287.js"></script>
+<script>
+    function makeE(cn, s, e) {
+        if (!e) { e = "div" }
+        var ele = document.createElement(e);
+        ele.style.cssText = cn;
+        if (s) {
+            switch (e) {
+                case "div": ele.innerHTML = s; break;
+                case "img": ele.src = s; break;
+                case "a": ele.href = s; break;
+            }
+        }
+        return ele;
+    }
+    // var data_source_100000287 = { "banner": { "0": [{ "img": "https://storage.jd.com/common.org/imgs/jdp_icon1.png", "link": "https://m.jd.com", "main": "京东闪付送100元礼包", "sec": "快来领取等你半天了" }], "1": [{ "img": "https://storage.jd.com/common.org/imgs/jdp_icon1.png", "link": "https://m.jd.com", "main": "京东闪付送100元礼包", "sec": "快来领取等你半天了" }, { "img": "https://storage.jd.com/common.org/imgs/jdp_icon1.png", "link": "https://m.jd.com", "main": "京东闪付送100元礼包", "sec": "快来领取等你半天了" }] }, "beiJingSe": "#f6e67a", "biaoTiSe": "#703918", "display": true, "erHangZiSe": "#485685", "yiHangZiSe": "#703918" }
+    // start
+    (function () {
+        var wrap = document.getElementById('jdp_wrap');
+        if (!data_source_100000287 || data_source_100000287.display != true) {
+            wrap.style.display = 'none';
+            return;
+        }
+        var sou = data_source_100000287;
+        var banner = sou.banner;
+        wrap.style.backgroundColor = sou.beiJingSe;
+        var cn = "text-align: center;";
+        var title = makeE(cn, "— 为您推荐 —");
+        title.style.color = sou.biaoTiSe;
+        wrap.appendChild(title)
+        for (var i = 0; i < 3; i++) {
+            var one = banner[i+""];
+            if(!one){continue;}
+            var ul = makeE("jdp_ul");
+            for (var j = 0; j < one.length; j++) {
+                var li = makeE("jdp_li jdp_li_" + one.length);
+                if(j===one.length-1){li.style.float = "right";}
+                var item = banner[i][j];
+                var mt = makeE("jdp_main_text", item.main);
+                mt.style.color = sou.yiHangZiSe;
+                var st = makeE("jdp_sec_text", item.sec);
+                st.style.color = sou.erHangZiSe;
+                var im = makeE("jdp_img", item.img, "img");
+                var a = makeE("jdp_a", item.link, "a");
+                li.appendChild(mt);
+                li.appendChild(st);
+                li.appendChild(im);
+                li.appendChild(a);
+                ul.appendChild(li);
+            }
+            wrap.appendChild(ul);
+        }
+    }())
+</script>
+
+</html>
