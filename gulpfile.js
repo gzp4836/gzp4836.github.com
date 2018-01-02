@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
+var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 
 uglify = require('gulp-uglify');
@@ -13,6 +14,14 @@ gulp.task('css', function () {
     .pipe(minifycss())                  //CSS压缩
     .pipe(gulp.dest(folder + '/dist/css'))      //压缩版输出
 });
+
+// sass
+gulp.task('sass', function () {
+  return gulp.src(folder + '/css/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(folder + '/css'));
+});
+
 // JS处理任务
 gulp.task('js', function () {
   return gulp.src(folder + '/js/*.js')      //引入所有需处理的JS

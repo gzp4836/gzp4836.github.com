@@ -4,189 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport">
-    <!-- <meta name="viewport" content="width=deice-width,initial-scale=1,maximum-scale=1,user-scalable=no" /> -->
+    <meta name="viewport" content="width=deice-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>街区地图</title>
-    <script>
-        var scale = 1 / window.devicePixelRatio;
-        console.log("scale: " + scale);
-        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width,initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-
-    </script>
-    <style>
-        @media screen and (max-width: 321px) {
-            body {
-                font-size: 16px
-            }
-        }
-
-        @media screen and (min-width: 321px) and (max-width:750px) {
-            body {
-                font-size: 17px
-            }
-        }
-
-        @media screen and (min-width: 750px) and (max-width:1100px) {
-            body {
-                font-size: 19px
-            }
-            body .menu {
-                width: 50%;
-            }
-
-        }
-
-        @media screen and (min-width: 1100px) and (max-width:1500px) {
-            body {
-                font-size: 22px;
-            }
-            body .menu {
-                width: 40%;
-                transform: translateX(0);
-            }
-
-        }
-
-        @media screen and (min-width: 1500px) {
-            body {
-                font-size: 24px;
-            }
-            body .menu {
-                width: 30%;
-                transform: translateX(0);
-            }
-        }
-    </style>
-    <!-- <link rel="stylesheet" href="css/main.scss"> -->
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 100px;
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-            height: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .header {
-            background-color: #1e1e1e;
-            height: 80px;
-            position: relative;
-
-        }
-
-
-        .header button {
-            background-image: url(img/back.svg);
-            background-size: contain;
-            display: inline-block;
-            position: absolute;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            top: 15px;
-            border: none;
-            padding: 0;
-            background-color: transparent;
-            outline: none;
-            font-size: 1.2em;
-        }
-
-        .header .cate {
-            background-image: url(img/category.svg);
-        }
-
-        .menu {
-            background-color: rgba(0, 0, 0, .8);
-            position: absolute;
-            top: 80px;
-            color: #eee;
-            bottom: 0;
-            transition: all .3s ease-in-out;
-            z-index: 1;
-            width: 100%;
-            transform: translateX(-100%);
-        }
-
-        .menu .search {
-            width: 100%;
-            position: relative;
-        }
-
-        .menu .search input {
-            background-color: #efefef;
-            margin-left: 1%;
-            width: 79%;
-            height: 100%;
-            outline: none;
-            border: none;
-            padding: 15px;
-            font-size: 1.1em;
-        }
-
-        .menu .search button {
-            display: inline-block;
-            width: 19%;
-            position: absolute;
-            height: 100%;
-            outline: none;
-            line-height: 50px;
-            text-align: center;
-            text-decoration: none;
-            color: #efefef;
-            border: none;
-            background-color: #1302fac4;
-            padding: 0;
-            top: 0;
-            font-size: 1.2em;
-
-        }
-
-        .menu ul {
-            margin: 0px;
-            padding: 0px;
-            list-style: none;
-            width: 100%;
-            overflow-y: scroll;
-            height: 100%;
-        }
-
-        .menu ul li {
-            padding: 0 3%;
-            line-height: 60px;
-            height: 60px;
-        }
-
-        .map {
-            height: 100%;
-            background: antiquewhite
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
     <header class="header">
-        <button></button>
+        <button data-bind="click:aClicker"></button>
     </header>
     <div class="menu">
         <div class="search">
-            <input type="search" />
+            <input type="search" value="Ch"/>
             <button data-bind="click:fillter">Fillter</button>
         </div>
         <ul class="list" data-bind="foreach:locList">
-            <li data-bind="text:name"></li>
+            <li data-bind="text:name,visible:visiable,click:$parent.markerShow"></li>
         </ul>
     </div>
     <div id='map' class="map"></div>
 </body>
 <script src="lib/knockout-3.4.2.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZuN1mAD68bsZoAbBXCUfqM561iPPAgrk&libraries=places&callback=initMap"
