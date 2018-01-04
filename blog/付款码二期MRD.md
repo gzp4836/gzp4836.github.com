@@ -106,3 +106,8 @@ https://wx.gtimg.com/pay/download/coupon/marketing_single_v1.0.pdf
 4.可配置活动栏通底，开发完成。
 5.闪付码付统一跳转代码，开发中。
 
+
+
+ETC 运营问题 
+1.
+
