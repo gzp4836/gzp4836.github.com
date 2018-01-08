@@ -1,244 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=deice-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>立即开通</title>
-    <style>
-        @media screen and (max-width: 319px) {
-            html {
-                font-size: 85.33px
-            }
-        }
-
-        @media screen and (min-width: 320px) and (max-width:359px) {
-            html {
-                font-size: 85.33px
-            }
-        }
-
-        @media screen and (min-width: 360px) and (max-width:374px) {
-            html {
-                font-size: 96px
-            }
-        }
-
-        @media screen and (min-width: 375px) and (max-width:383px) {
-            html {
-                font-size: 100px
-            }
-        }
-
-        @media screen and (min-width: 384px) and (max-width:399px) {
-            html {
-                font-size: 102.4px
-            }
-        }
-
-        @media screen and (min-width: 400px) and (max-width:413px) {
-            html {
-                font-size: 106.67px
-            }
-        }
-
-        @media screen and (min-width: 414px) {
-            html {
-                font-size: 110.4px
-            }
-        }
-
-        html {
-            padding: 0;
-            margin: 0;
-            height: 100%;
-        }
-
-        body {
-            padding: 0;
-            margin: 0;
-            height: 100%;
-            width: 100%;
-            font-size: 16px;
-        }
-
-        .continer {
-            background-color: #e43137;
-            background-image: url(img/logo.png);
-            background-position: .18rem .16rem;
-            background-repeat: no-repeat;
-            background-size: 1.45rem;
-            height: 100%;
-
-        }
-
-        .model {
-            color: #ffffff;
-            text-align: center;
-            padding-top: 1.22rem;
-        }
-
-        .model:last-child {
-            padding-top: .8rem;
-        }
-
-        .model h3 {
-            margin: 0;
-            font-size: .21rem;
-        }
-
-        .model p {
-            margin-top: .08rem;
-            margin-bottom: .22rem;
-            font-size: .16rem;
-        }
-
-        .model span {
-            color: #ffe135;
-        }
-
-        .model button {
-            border: none;
-            background-color: #ffe135;
-            color: #e43137;
-            border-radius: .25rem;
-            width: 80%;
-            height: .5rem;
-            font-size: .21rem;
-            outline: none;
-        }
-
-        footer {
-            position: absolute;
-            bottom: .12rem;
-            font-size: .12rem;
-            color: #fff;
-            text-align: center;
-            width: 100%;
-        }
-
-        .musk {
-            background-color: rgba(0, 0, 0, .7);
-            /* background-color: #4b1012; */
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            top: 0;
-        }
-
-        .dialog {
-            height: 2.07rem;
-            position: absolute;
-            top: 1.66rem;
-            left: .2rem;
-            right: .2rem;
-            background-color: #ffffff;
-            z-index: 2;
-            background-image: url(img/close.png);
-            background-position: top .1rem right .1rem;
-            background-size: .15rem;
-            background-repeat: no-repeat;
-            font-size: .18rem;
-
-        }
-
-        .dialog-close {
-            position: absolute;
-            width: .3rem;
-            height: .3rem;
-            top: 0;
-            right: 0;
-        }
-
-        .dialog-title {
-            color: #707070;
-            font-size: .18rem;
-        }
-
-        .dialog-title p {
-            margin: 0;
-            text-align: center;
-
-        }
-
-        .dialog-button {
-            height: 1.16rem;
-            position: relative;
-
-        }
-
-        .dialog-jd {
-            border-radius: .25rem;
-            color: #ffffff;
-            background-color: #e43137;
-            background-image: url(img/jd.png);
-            background-size: .3rem;
-            background-position: left .2rem top .07rem;
-            background-repeat: no-repeat;
-            position: absolute;
-            top: .2rem;
-            left: .2rem;
-            right: .2rem;
-            line-height: .45rem;
-        }
-
-        .dialog-button .dialog-jdjr  {
-            background-image: url(img/jdjr.png);
-            top: .82rem;
-    
-        }
-
-        .dialog-button span {
-            margin-left: .65rem;
-        }
-
-
-        .dialog-shut {
-            width: 1.37rem;
-            height: .45rem;
-            top: .2rem;
-            right: .2rem;
-            text-align: left;
-            line-height: .45rem;
-            text-align: center;
-            width: 1.37rem;
-            height: .45rem;
-            border-radius: .25rem;
-            color: #ffffff;
-            position: absolute;
-            background-color: #c7c7c7;
-        }
-
-        .dialog-title {
-            padding: .2rem 0;
-            margin: 0;
-            border-bottom: 1px solid #dbdbdb;
-        }
-
-        .row .dialog-title {
-            margin-top: .5rem;
-            padding: 0;
-            border: none;
-        }
-
-        .row .dialog-button span {
-            margin-left: .54rem;
-        }
-
-        .row .dialog-jd {
-            width: 1.37rem;
-            height: .45rem;
-            top: .2rem;
-            right: .2rem;
-            text-align: left;
-        }
-
-        .row .jr .dialog-jd {
-            background-image: url(img/jdjr.png);
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -247,18 +14,21 @@
             <h3>开通京东闪付</h3>
             <p>领
                 <span>100</span>元大礼包</p>
-            <button>点我开通</button>
+            <button class="quick">点我开通</button>
         </div>
         <div class="model">
             <h3>开通京东付款码</h3>
             <p>领
                 <span>50</span>元大礼包</p>
-            <button>点我开通</button>
+            <button class="code">点我开通</button>
         </div>
     </div>
     <footer>开通过程需打开最新版本手机京东APP或京东金融APP</footer>
-    <div class="musk"></div>
-    <!-- <div class="dialog row">
+    <div class="musk" style="display:none">
+        <div class="loading"></div>
+    </div>
+    <!-- 
+    <div class="dialog row">
         <div class="dialog-close"></div>
         <div class="dialog-title">
             <p>开通需下载</p>
@@ -268,22 +38,24 @@
             <div class="dialog-jd"><span>去下载</span></div>
             <div class="dialog-shut">关闭</div>
         </div>
-    </div> -->
+    </div>
+
     <div class="dialog">
         <div class="dialog-close"></div>
         <div class="dialog-title">
             <p>开通京东付款码</p>
         </div>
         <div class="dialog-button">
-            <div class="dialog-jd">
+            <div id="openJD" class="dialog-jd">
                 <span>去手机京东APP开通</span>
             </div>
-            <div class="dialog-jdjr dialog-jd">
+            <div id="openJR" class="dialog-jdjr dialog-jd">
                 <span>去京东金融APP开通</span>
             </div>
         </div>
     </div>
+    -->
 
 </body>
-
+<script src="js/main.js"></script>
 </html>
