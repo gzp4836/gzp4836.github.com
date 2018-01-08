@@ -150,9 +150,7 @@
         } else if (app === "jr" && kind === "code") {
             url = jr_code;
         }
-        // window.location.href = url;
-        console.log(url);
-
+        window.location.href = url;
         sendPac();
         showDown();
     }
