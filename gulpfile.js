@@ -5,6 +5,8 @@ var rename = require('gulp-rename');
 var notify = require('gulp-notify');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
+var htmlminify = require("gulp-html-minify");
+
 
 uglify = require('gulp-uglify');
 // 样式处理任务
@@ -28,6 +30,14 @@ gulp.task('js', function () {
     .pipe(rename({ suffix: '.min' }))         //重命名
     .pipe(uglify())                           //压缩JS
     .pipe(gulp.dest(folder + '/dist/js'))        //压缩版输出
+});
+
+// html
+gulp.task('html' , function(){
+  return gulp.src(folder + "/*.html")
+      .pipe(rename({ suffix: '.min' }))  
+      .pipe(htmlminify())
+      .pipe(gulp.dest(folder + "/dist/"))
 });
 
 
