@@ -1,0 +1,130 @@
+{
+    "pageTitle": "",
+    "pageColor": "",
+    "imgBox": [{
+        "id": "",
+        "name": "",
+        "src": "",
+        "link": "",
+        "dataKey": "",
+        "dataDue": "",
+        "class": "",
+        "linkClass": "",
+        "imgClass": "",
+        "otherHtml": ""
+    }],
+    "imgTab": [{
+        "afterTo": "",
+        "btn": [{
+            "name": "",
+            "src": "",
+            "src_now": "",
+            "class": "",
+            "imgClass": ""
+        }],
+        "msg": [{
+            "name": "",
+            "src": "",
+            "class": "",
+            "linkClass": "",
+            "imgClass": ""
+        }]
+    }],
+    "ruleMore": [{
+        "id": "",
+        "name": "",
+        "title": "",
+        "msg": ["", ""]
+    }],
+    "share": {
+        "title": "",
+        "desc": "",
+        "logo": ""
+    },
+    "stock": [{
+        "addId": "",
+        "isProgress": "",
+        "prizeTotal": "",
+        "prizeId": "",
+        "completeTxt": ""
+    }],
+    "dialog": {
+        "link": "",
+        "src": "",
+        "newUserLink": ""
+    },
+    "keyVal": "",
+    "otherHtml": "",
+    "pageTime": {
+        "onlineDate": "",
+        "onlineLink": "",
+        "offlineDate": "",
+        "offlineLink": ""
+    }
+}
+
+
+{
+    "pageTitle": "页面Title",
+    "pageColor": "页面背景色",
+    "imgBox": [{
+        "id": "更多规则ID",
+        "name": "图片名称",
+        "src": "图片地址",
+        "link": "图片链接",
+        "dataKey": "图片埋点",
+        "dataDue": "到期删除 格式：2017/12/12 12:12:12",
+        "class": "两个图片并排加 w50  三个图片加w33 四个w25 五个w20",
+        "linkClass": "额外样式",
+        "imgClass": "图片额外样式",
+        "otherHtml": "其他html代码"
+    }],
+    "imgTab": [{
+        "afterTo": "加在哪个 图片ID 后面",
+        "btn": [{
+            "name": "图片名称",
+            "src": "图片地址",
+            "src_now": "图片地址_Tab选中态",
+            "class": "两个图片并排加 w50  三个图片加w33 四个w25 五个w20",
+            "imgClass": "图片额外样式"
+        }],
+        "msg": [{
+            "name": "图片名称",
+            "src": "图片地址",
+            "class": "额外样式",
+            "linkClass": "额外样式",
+            "imgClass": "图片额外样式"
+        }]
+    }],
+    "ruleMore": [{
+        "id": "更多规则ID",
+        "name": "更多规则名称",
+        "title": "更多规则Title",
+        "msg": ["更多规则内容", "更多规则内容"]
+    }],
+    "share": {
+        "title": "分享Title",
+        "desc": "分享描述",
+        "logo": "分享Logo"
+    },
+    "stock": [{
+        "addId": "添加的ID",
+        "isProgress": "是否为进度条 是写 true",
+        "prizeTotal": "库存总数",
+        "prizeId": "库存ID",
+        "completeTxt": "库存为0提示语"
+    }],
+    "dialog": {
+        "link": "点击跳转链接",
+        "src": "图片地址",
+        "newUserLink": "新用户跳转链接"
+    },
+    "keyVal": "埋点key",
+    "otherHtml": "其他html代码",
+    "pageTime": {
+        "onlineDate": "上线日期 格式：2017/12/12 12:12:12",
+        "onlineLink": "上线日期前的页面地址",
+        "offlineDate": "下线日期 格式：2017/12/12 12:12:12",
+        "offlineLink": "下线日期后的页面地址"
+    }
+}
