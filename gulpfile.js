@@ -1,4 +1,4 @@
-var folder = "jd-code-count";
+var folder = "commonPay";
 var gulp = require('gulp');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');

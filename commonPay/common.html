@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta charset="utf-8">
+    <title>京东支付</title>
+    <script>window.location.href="https://pb.jd.com/activity/2018/order/html/order.html" + window.location.search</script>
+    <link rel="icon" href="//www.jd.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//static.360buyimg.com/finance/mobile/base/cm/1.0.0/reset.css">
+    <link rel="stylesheet" href="//static.360buyimg.com/finance/mobile/base/jmcom/1.0.0/css/??common/common.100.css,coms/jdloading.100.css,coms/toast.100.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+</head>
+<body>
+
+<div class="main-wrap">
+    <div class="top-cont ta-c" id="J_imgBox"></div>
+</div>
+
+<script src="//m.jr.jd.com/mjractivity/data_source_100000332.js" id="J_data_source"></script>
+<script src="//static.360buyimg.com/finance/mobile/base/??jm/js/lib/zepto-1.2.0.js,1.0.0/js/lib/fastclick.js"></script>
+<script src="//static.360buyimg.com/finance/mobile/base/jm/js/lib/clickCount.js"></script>
+<script src="//static.360buyimg.com/finance/mobile/base/1.0.0/js/lib/iscroll.js"></script>
+<script src="//m.jr.jd.com/crayfish/zui/bridge/1.0.7/bridge.js"></script>
+<script src="//static.360buyimg.com/finance/mobile/base/jm/1.0.0/js/jm.js"></script>
+<script src="//static.360buyimg.com/finance/mobile/base/jmcom/1.0.0/js/??dist/tools/1.0.0/tools.js,dist/jdloading/1.0.0/jdloading.js,dist/toast/1.0.0/toast.js"></script>
+<script src="//static.360buyimg.com/finance/mobile/base/jm/js/dist/share/1.0.6/share.js"></script>
+<script src="../js/jdShare.js"></script>
+<script src="../js/common.js"></script>
+<script src="//m.jr.jd.com/crayfish/zui/base/1.0.0/base.js"></script>
+
+
+<script>
+    function ShareCallback() {
+        $.ajax({
+            url: 'https://pa.jd.com/prize/center/h5/draw?entranceKey=CD7F3281723DFD933321374AAA649379',
+            dataType: "jsonp",
+            success: function(res) {
+                console.log(res);
+            },
+            error: function() {},
+            complete: function() {}
+        });
+    }
+
+    $(function() {
+        var sid = jm.getUrlString("sid") || jm.getCookie("sid");
+        var loginUrl = "//passport.m.jd.com/user/login.action";
+        var curPath = encodeURIComponent(location.href);
+        var jdloading = jm.com.jdloading;
+
+        var user_share = function() {
+            var D = eval($('#J_data_source')[0].src.replace(/(.*\/)*([^.]+).*/ig, "$2"));
+            var ShareUrl = location.origin + location.pathname;
+
+            if (!D.share) {
+                return;
+            }
+
+            if (navigator.userAgent.toLowerCase().indexOf('jdfinance') != -1) {
+                var defer = jsBridgeV3.onReady();
+                var shareDate = {
+                    img: D.share.logo || 'https://img30.360buyimg.com/jr_image/jfs/t5863/184/8373437912/11900/5c7340d2/5979a086N794a2b26.png',
+                    link: ShareUrl,
+                    desc: D.share.desc || '',
+                    title: D.share.title || '京东支付'
+
+                };
+                defer.then(function(res) {
+                    this.jsToGetResp(function(d) {
+                        if (parseInt(d.share.shareState) === 2) {
+                            window.ShareCallback && window.ShareCallback();
+                        }
+                    }, {
+                        type: 4,
+                        shareDate: shareDate
+                    })
+                });
+
+            }else if (navigator.userAgent.toLowerCase().indexOf('jdapp') != -1) {
+                jdShare.callSharePane({
+                    title: D.share.title || '京东支付',
+                    content: D.share.desc || '',
+                    url: ShareUrl,
+                    img: D.share.logo || 'https://img30.360buyimg.com/jr_image/jfs/t5863/184/8373437912/11900/5c7340d2/5979a086N794a2b26.png',
+                    channel: 'Wxmoments,Wxfriends,Sinaweibo,QQfriends,QQzone,CopyURL',
+                    callback: function() {
+                        window.ShareCallback && window.ShareCallback();
+                    },
+                    clickcallback: null,
+                    qrparam: null,
+                    timeline_title: ''
+                });
+            }
+            else {
+                alert('右上角分享');
+            }
+        }
+
+        var user_notLogin = function() {
+            window.location.href = loginUrl + "?returnurl=" + curPath;
+        };
+        var user_getOpenStatus = function() {
+            var url = "https://home.jdpay.com/open/quickpay/status";
+            jdloading.show();
+
+            $.ajax({
+                url: url,
+                dataType: "jsonp",
+                data: {
+                    sid: sid
+                },
+                success: function(res) {
+                    jdloading.close();
+                    if (res.respCode == "00000") {
+                        user_share();
+                    } else {
+                        user_notLogin();
+                    }
+                },
+                error: function() {
+                    jdloading.close();
+                },
+                complete: function() {
+
+                }
+            });
+        };
+
+        $('#J_imgBox .img-box:eq(0)').click(function() {
+            if (!sid) {
+                user_notLogin();
+            } else {
+                user_getOpenStatus();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
