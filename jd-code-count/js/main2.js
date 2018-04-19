@@ -1,4 +1,6 @@
 (function () {
+    var add = '<img style="width: 100%" src="//storage.jd.com/common.org/imgs/bg1.png"> <img style="width: 100%;height: 50%;margin-top: -20%;" src="//storage.jd.com/common.org/imgs/bg3.png"> <img style="width: 100%;position: absolute;bottom: 0;" src="//storage.jd.com/common.org/imgs/bg2.png"> ';
+    document.getElementsByClassName("continer")[0].insertAdjacentHTML('afterbegin', add);
     var ua = window.navigator.userAgent;
     var kind;
     var access = "saomalaxin_";
