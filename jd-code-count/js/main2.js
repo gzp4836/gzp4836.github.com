@@ -1,4 +1,7 @@
 (function () {
+    var p_id = getUrlString("type");
+    window.location.href  = "//pb.jd.com/activity/2018/kaitonglingquan/html/index.html?p_id="+p_id;
+    return false;
     var add = '<img style="width: 100%" src="//storage.jd.com/common.org/imgs/bg1.png"> <img style="width: 100%;height: 50%;margin-top: -20%;" src="//storage.jd.com/common.org/imgs/bg3.png"> <img style="width: 100%;position: absolute;bottom: 0;" src="//storage.jd.com/common.org/imgs/bg2.png"> ';
     document.getElementsByClassName("continer")[0].insertAdjacentHTML('afterbegin', add);
     var ua = window.navigator.userAgent;
@@ -12,7 +15,7 @@
     var jr_quick = 'jdmobile://share?jumpType=5&jumpUrl=2012&­param={\"source\":\"saomalaxin\"}&sourceurl=1022*' + location.href;
     var jr_code = 'jdmobile://share?jumpType=5&jumpUrl=120&sourceurl=1022*' + location.href;
     var jd_ios_down = "//itunes.apple.com/cn/app/id414245413";
-    var jd_and_down = "//storage.360buyimg.com/build-cms/V6.3.0_jd-mzbzhi.apk?timeStamp=1504244360196";
+    var jd_and_down = "//storage.360buyimg.com/build-cms/V7.0.0.58370_T1_jd-mzbzhi.apk?timeStamp=1525414923529";
     // var jr_ios_down = "//itunes.apple.com/cn/app/jing-dong-jin-rong/id895682747?mt=8";
     // var jr_and_down = "//download.jr.jd.com/downapp/jrapp_jr427.apk";
     var jr_ios_down = "https://m.jr.jd.com/spe/downloadApp/index.html?id=401"; 
@@ -245,10 +248,11 @@
     function init() {
         getDom();
         isJDJR();
+        addFooter();
         access += getUrlString("type") || "default";
         jd_quick = 'openApp.jdMobile://virtual?params={"category":"jump","des":"quickpass","source":"' + access + '"}'
         musk.addEventListener("click", closeDialog, false);
-        // sendPac();
+        sendPac();
         setTimeout(function(){
             detailImage =  new Image();
             detailImage.src = "//storage.jd.com/common.org/payment/img/5a546007N766ca127.jpg";
@@ -270,6 +274,16 @@
         muskDisplay("block");
         getDom();
         dialog_close[0].addEventListener("click", closeDialog, false);
+    }
+    function addFooter(){
+        let page_type = getUrlString("xd");
+        if(page_type == "jrxd"){
+            let footerImg = document.createElement("img");
+            footerImg.style = "width:100%";
+            footerImg.src = "//img30.360buyimg.com/jr_image/jfs/t12898/1/2392050362/70335/75c2eb7d/5a41bb03N69594e4e.png";
+            document.getElementsByTagName("body")[0].append(footerImg);
+            footerImg.addEventListener("click",function(){window.location.href = "//m.jr.jd.com/spe/qyy/hzq/index.html?usertype=1176&from=dt"},false)
+        }
     }
 
     function kt() {

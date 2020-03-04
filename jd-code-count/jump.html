@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=deice-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//static.360buyimg.com/finance/mobile/base/1.0.0/css/reset.css"/>
+    <title>正在跳转</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function getUrlString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    //判断是否是金融或者商城app
+    let ua = window.navigator.userAgent.toLocaleLowerCase();
+    let isjd = ua.indexOf("jdapp")!=-1;
+    let isjr = ua.indexOf("jdjr")!=-1;
+    let p_id = getUrlString("p_id") || getUrlString("type");
+    //不是跳转京东app打开
+    if(!isjd || !jsjr){
+        location.href = "";
+    }
+    //跳转对应app协议
+    if(isjd){
+        location.href = 'openapp.jdmobile://virtual?params={"category":"jump","des":"jdpaymentcode","source":"'+p_id+'"}';
+    }
+    if(isjr){
+        location.href = 'jdmobile://share?jumpType=5&jumpUrl=120&sourceurl=1022*'+location.href;
+    }
+    
+    setTimeout(function(){
+        history.back();
+    },2000)
+</script>
+</html>

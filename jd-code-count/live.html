@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>视频播放</title>
+  <link href="//vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
+  <link href="//unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #fff;">
+  <style>
+    .video-js .vjs-time-control {
+      display: block;
+    }
+
+    .video-js .vjs-remaining-time {
+      display: none;
+    }
+
+    .video-js.vjs-playing .vjs-tech {
+      pointer-events: auto;
+    }
+
+    .video-js .vjs-big-play-button {
+      font-size: 2.5em;
+      line-height: 2.3em;
+      height: 2.5em;
+      width: 2.5em;
+      -webkit-border-radius: 2.5em;
+      -moz-border-radius: 2.5em;
+      border-radius: 2.5em;
+      background-color: #73859f;
+      background-color: rgba(115, 133, 159, .5);
+      border-width: 0.15em;
+      margin-top: -1.25em;
+      margin-left: -1.75em;
+    }
+
+    /* 中间的播放箭头 */
+    .vjs-big-play-button .vjs-icon-placeholder {
+      font-size: 1.63em;
+    }
+
+    /* 加载圆圈 */
+    .vjs-loading-spinner {
+      font-size: 2.5em;
+      width: 2em;
+      height: 2em;
+      border-radius: 1em;
+      margin-top: -1em;
+      margin-left: -1.5em;
+    }
+
+    .video-js .vjs-subtitles {
+      font-family: "lucida grande", "lucida sans unicode", lucida, "Helvetica Neue", helvetica, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: #fc6;
+      font-size: 2em;
+      line-height: 1em;
+    }
+  </style>
+  <h3 style="text-align: center;color: #007fff;">京东收单培训</h3>
+  <ul data-bind="foreach:videos" style="padding:0;">
+    <li style="display: block;width: 100%;margin-top: 20px;">
+      <p style="color: #999999;margin-bottom: 5px;margin-top: 10px;" data-bind="text:dis"></p>
+      <video style="width:100%;" class="video-js vjs-theme-forest vjs-big-play-centered" preload="auto" data-setup="{}"
+        playsinline controls>
+        <source data-bind="attr:{src:res}" type="video/mp4" />
+      </video>
+    </li>
+  </ul>
+  <script src="//vjs.zencdn.net/7.6.6/video.js"></script>
+  <script src="//storage.jd.com/common.org/video/jquery.js"></script>
+  <script src="//storage.jd.com/common.org/video/knockout-3.4.2.js"></script>
+  <script>
+    ko.applyBindings({
+      videos: [
+        { img: '', dis: '企业商户PC端进件流程', res: '//storage.jd.com/common.org/video/%E4%BC%81%E4%B8%9A%E5%95%86%E6%88%B7PC%E7%AB%AF%E8%BF%9B%E4%BB%B6%E6%B5%81%E7%A8%8B.mp4' },
+        { img: '', dis: '双屏机培训0218', res: '//storage.jd.com/common.org/video/%E5%8F%8C%E5%B1%8F%E6%9C%BA%E5%9F%B9%E8%AE%AD0218.mp4' },
+        { img: '', dis: '哆啦宝小二APP商户进件流程', res: '//storage.jd.com/common.org/video/%E5%93%86%E5%95%A6%E5%AE%9D%E5%B0%8F%E4%BA%8CAPP%E5%95%86%E6%88%B7%E8%BF%9B%E4%BB%B6%E6%B5%81%E7%A8%8B.mp4' }
+      ]
+    })
+  </script>
+</body>
+
+</html>
