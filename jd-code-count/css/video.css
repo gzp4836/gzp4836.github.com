@@ -1,0 +1,128 @@
+html {
+	background-color: #ffffff;
+	height: 100%;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #ededed;
+	max-width: 400px;
+	margin: auto;
+	height: 100%;
+	font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', STHeiti, 'Microsoft Yahei', Tahoma, Simsun, sans-serif;
+}
+
+* {
+	/* border: 1px solid; */
+	box-sizing: border-box;
+	outline: none;
+}
+
+h3 {
+	font-size: 1.5em;
+	padding: 10px 15px;
+	background-color: #ffffff;
+	margin: 0;
+}
+
+ul,
+li {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.sel {
+	margin: 0 15px;
+}
+
+.sel li {
+	display: inline-block;
+	padding: 2px 5px;
+	margin-top: 8px;
+	margin-left: 10px;
+	font-size: 0.7em;
+	border: 1px solid #71777d;
+	border-radius: 7px;
+	color: #71777d;
+}
+
+.list {
+	margin: 0 15px;
+}
+
+.list li {
+	margin-top: 10px;
+	display: flex;
+	background-color: #ffffff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	border-radius: 5px;
+	height: 100px;
+	background-image: url(../img/arrow-right.png);
+	background-size: 18px;
+	background-repeat: no-repeat;
+	background-position: 95%;
+}
+
+.list img {
+	width: 120px;
+	border-radius: 5px;
+	align-self: center;
+}
+
+.con {
+	width: 100%;
+	margin-left: 10px;
+	position: relative;
+	height: 62px;
+	align-self: center;
+}
+.content lable {
+	display: block;
+	margin-top: 20px;
+	font-size: 0.8em;
+	color: #71777d;
+}
+
+.con label {
+	position: absolute;
+	bottom: 0;
+	font-size: 0.7em;
+	color: #71777d;
+}
+.vnly {
+	margin-top: 10px;
+	width: 100%;
+	background-color: #ededed;
+	border-radius: 2px;
+}
+
+.vnly:first-child {
+	margin-top: 0;
+}
+
+.sub {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 10px;
+	font-size: 1.1em;
+	align-items: center;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.name {
+	font-size: 0.8em;
+	color: #71777d;
+}
+.content {
+	margin: 0px 15px;
+	padding-bottom: 40px;
+}
