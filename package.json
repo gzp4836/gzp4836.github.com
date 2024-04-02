@@ -1,25 +1,16 @@
 {
-	"name": "gzp4836-website-optimization",
-	"version": "1.0.0",
-	"description": "website optimizaation test",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"browser-sync": "^2.18.13",
-		"gulp": "^3.9.1",
-		"gulp-minify-css": "^1.2.4",
-		"gulp-html-minify": "0.0.14",
-		"gulp-notify": "^3.0.0",
-		"gulp-rename": "^1.2.2",
-		"gulp-sass": "^3.1.0",
-		"gulp-uglify": "^3.0.0"
-	},
-	"devDependencies": {
-		"standard": "^10.0.3",
-		"video.js": "^7.6.6"
-	}
+  "name": "gzp4836.github.io",
+  "version": "1.0.0",
+  "description": "website optimizaation test",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.0.2"
+  }
 }
